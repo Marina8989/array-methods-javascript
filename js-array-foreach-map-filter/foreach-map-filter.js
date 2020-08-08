@@ -8,8 +8,14 @@ Examples:
 */
 
 function doubleValues(arr){
-    
+    const doubles = arr.map(function (val) {
+        return val * 2;
+    })
+    return doubles;
 }
+console.log(doubleValues([1, 2, 3]));
+console.log(doubleValues([1, -2, -3]));
+
 
 /*
 Write a function called onlyEvenValues which accepts an array and returns a new array with only the even values in the array passed to the function
