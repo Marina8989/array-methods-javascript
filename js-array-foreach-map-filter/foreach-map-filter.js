@@ -26,9 +26,16 @@ Examples:
 
 */
 function onlyEvenValues(arr){
-    
+    const even = arr.filter(function(val) {
+       if(val % 2 == 0) {
+           return val;
+       }
+    })
+    return even;
 }
 
+console.log(onlyEvenValues([1,2,3])) // [2]
+console.log(onlyEvenValues([5,1,2,3,10])) // [2,10]
 /*
 Write a function called showFirstAndLast which accepts an array of strings and returns a new array with only the first and last character of each string.
 
@@ -38,8 +45,15 @@ Examples:
 
 */
 function showFirstAndLast(arr){
-    
+    const firstAndLast = arr.map(function(val) {
+        const first = val[0];
+        const last = val[val.length - 1];
+        return `${first}${last}`;
+    });
+    return firstAndLast;
 }
+console.log(showFirstAndLast(["colt", "matt", "tim", "test"]));
+console.log(showFirstAndLast(["hi", "goodbye", "smile"]));
 
 /*
 Write a function called addKeyAndValue which accepts an array of objects, a key, and a value and returns the array passed to the function with the new key and value added for each object 
@@ -51,8 +65,12 @@ Examples:
 
 */
 function addKeyAndValue(arr,key,value){
-    
+    console.log(arr[0]);
 }
+
+addKeyAndValue([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}], 'title', 'instructor') 
+    
+    // [{name: 'Elie', title:'instructor'}, {name: 'Tim', title:'instructor'}, {name: 'Matt', title:'instructor'}, {name: 'Colt', title:'instructor'}]
 
 /*
 Write a function called vowelCount which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count
