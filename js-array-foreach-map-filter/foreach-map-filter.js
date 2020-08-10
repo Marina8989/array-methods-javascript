@@ -86,7 +86,20 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 function vowelCount(str){
-  
+  const arr = str.split("");
+  const vowels = "aeiou";
+  const obj = {};
+  arr.filter(function (item) {
+    const lowerCase = item.toLowerCase();
+    if (vowels.indexOf(lowerCase) !== -1) {
+      if (obj[lowerCase]) {
+        obj[lowerCase]++;
+      } else {
+        obj[lowerCase] = 1;
+      }
+    }
+  });
+  return obj;
 }
     console.log(vowelCount('Elie'))// {e:2,i:1};
     console.log(vowelCount('Tim')) // {i:1};
@@ -162,7 +175,12 @@ Examples:
 */
 
 function filterByValue(arr, key) {
- 
+ const newArr = arr.filter(function (item) {
+   if (item.hasOwnProperty(key)) {
+     return true;
+   }
+ });
+ return newArr;
 }
 console.log(filterByValue([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner')); // [{first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Colt', last:"Steele", isCatOwner: true}]
 /*
@@ -174,7 +192,12 @@ Examples:
 */
 
 function find(arr, searchValue) {
-    
+    const value = arr.find(function (val) {
+      if (val === searchValue) {
+        return searchValue;
+      }
+    });
+    return value;
 }
 console.log(find([1,2,3,4,5], 3)) // 3
 console.log(find([1,2,3,4,5], 10)) // undefined
@@ -185,8 +208,16 @@ Examples:
     findInObj([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner',true) // {first: 'Tim', last:"Garcia", isCatOwner: true}
 */
 
-function findInObj(arr, key, searchValue) {}
-
+function findInObj(arr, key, searchValue) {
+    const x = arr.find(function (item) {
+      if (item[key] === searchValue) {
+        return item;
+      }
+    });
+    return x;
+}
+console.log(findInObj([{ first: 'Elie', last: "Schoppik" }, { first: 'Tim', last: "Garcia", isCatOwner: true }, { first: 'Matt', last: "Lane" }, { first: 'Colt', last: "Steele", isCatOwner: true }], 'isCatOwner', true));
+ // {first: 'Tim', last:"Garcia", isCatOwner: true}
 /*
 Write a function called removeVowels which accepts a string and returns a new string with all of the vowels (both uppercased and lowercased) removed. Every character in the new string should be lowercased.
 
