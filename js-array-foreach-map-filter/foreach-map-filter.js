@@ -65,12 +65,15 @@ Examples:
 
 */
 function addKeyAndValue(arr,key,value){
-   
+    arr.forEach(function (item) {
+      item[key] = value;
+    });
+    return arr;
 }
 
-//addKeyAndValue([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}], 'title', 'instructor') 
+console.log(addKeyAndValue([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}], 'title', 'instructor'));
     
-    // [{name: 'Elie', title:'instructor'}, {name: 'Tim', title:'instructor'}, {name: 'Matt', title:'instructor'}, {name: 'Colt', title:'instructor'}]
+   // [{name: 'Elie', title:'instructor'}, {name: 'Tim', title:'instructor'}, {name: 'Matt', title:'instructor'}, {name: 'Colt', title:'instructor'}]
 
 /*
 Write a function called vowelCount which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count
@@ -115,7 +118,10 @@ Examples:
 */
 
 function valTimesIndex(arr){
-   
+    const newArr = arr.map((item, index) => {
+      return item * index;
+    });
+    return newArr;
 }
  console.log(valTimesIndex([1,2,3])) // [0,2,6]
  console.log(valTimesIndex([1,-2,-3])) // [0,-2,-6]
@@ -128,7 +134,10 @@ Examples:
 */
 
 function extractKey(arr, key){
-    
+     const newArr = arr.map(function (item) {
+       return item[key];
+     });
+     return newArr;
 }
 console.log(extractKey([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}], 'name')); // ['Elie', 'Tim', 'Matt', 'Colt']
 /*
@@ -139,7 +148,10 @@ Examples:
 */
 
 function extractFullName(arr){
-    
+    const newArr = arr.map(function (item) {
+      return `${item.first} ${item.last}`;
+    });
+    return newArr;
 }
 console.log(extractFullName([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia"}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele"}])); // ['Elie Schoppik', 'Tim Garcia', 'Matt Lane', 'Colt Steele']
 /*
